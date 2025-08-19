@@ -82,7 +82,7 @@ Create and render an `IdCard` component with 6 props:
   gender='male'
   :height="178"
   :birth='new Date("1992-07-14")'
-  picture="https://randomuser.me/api/portraits/men/44.jpg"
+  picture="https://xsgames.co/randomusers/avatar.php?g=male"
 />
 
 <IdCard
@@ -91,7 +91,7 @@ Create and render an `IdCard` component with 6 props:
   gender='female'
   :height="172"
   :birth='new Date("1988-05-11")'
-  picture="https://randomuser.me/api/portraits/women/44.jpg"
+  picture="https://xsgames.co/randomusers/avatar.php?g=female"
 />
 ```
 
