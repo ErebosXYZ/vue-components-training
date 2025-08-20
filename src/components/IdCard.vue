@@ -41,8 +41,8 @@ const formattedBirth = computed(() => {
 
 <style scoped>
 .container {
-    border: solid black;
-    margin: 5px;
+    border: solid black 2px;
+    margin: 10px;
     padding: 5px;
     display: grid;
     grid-template-columns: 1fr 3fr;

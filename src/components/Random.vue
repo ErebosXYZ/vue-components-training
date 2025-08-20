@@ -19,5 +19,9 @@ const randomNumber = (min, max) => {
 </template>
 
 <style scoped>
-
+p {
+    border: solid black 2px;
+    margin: 10px;
+    padding: 5px;
+}
 </style>
