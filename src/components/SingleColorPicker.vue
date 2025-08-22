@@ -1,75 +1,70 @@
 <template>
-    <div class="container">
-        <div class="square" :style="{ backgroundColor: bgColor }"></div>
-        <label :for="color" class="color">{{ color.toUpperCase() }}:</label>
-        <input 
-            type="number" 
-            :id="color" 
-            v-model.number="localValue" 
-            min="0" 
-            max="255"
-            @input="emitChange"
-        >
-    </div>
+  <div class="container">
+    <div
+      class="square"
+      :style="{ backgroundColor: squareColor }"
+    ></div>
+    <span class="color">{{ color.toUpperCase() }}:</span>
+    <input
+      type="number"
+      min="0"
+      max="255"
+      :value="value"
+      @input="onInput"
+    />
+    
+  </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps({
-    color: {
-        type: String,
-        validator: (val) => ['r', 'g', 'b'].includes(val),
-        required: true
-    },
-    value: {
-        type: Number,
-        validator: (val) => val >= 0 && val <= 255,
-        required: true
-    }
+  color: {
+    type: String,
+    validator: (val) => ['r', 'g', 'b'].includes(val),
+    required: true
+  },
+  value: {
+    type: Number,
+    validator: (val) => val >= 0 && val <= 255,
+    required: true
+  }
 })
 
-const emit = defineEmits(['update:value'])
+const emit = defineEmits(['change'])
 
-const localValue = ref(props.value)
-
-// Sync localValue with props.value when it changes
-watch(() => props.value, (newValue) => {
-    localValue.value = newValue
+const squareColor = computed(() => {
+  if (props.color === 'r') return `rgb(${props.value},0,0)`
+  if (props.color === 'g') return `rgb(0,${props.value},0)`
+  if (props.color === 'b') return `rgb(0,0,${props.value})`
+  return 'black'
 })
 
-// Emit changes when localValue changes
-const emitChange = () => {
-    emit('update:value', localValue.value)
+function onInput(event) {
+  let val = Number(event.target.value)
+  if (val < 0) val = 0
+  if (val > 255) val = 255
+  emit('change', val)
 }
-
-const bgColor = computed(() => {
-    return `rgb(${
-        props.color === 'r' ? localValue.value : 0
-    },${
-        props.color === 'g' ? localValue.value : 0
-    },${
-        props.color === 'b' ? localValue.value : 0
-    })`
-})
 </script>
 
 <style scoped>
 .container {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    align-items: center;
-    margin: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin: 5px;
 }
 
 .square {
-    border: solid black;
-    height: 5vw;
-    width: 5vw;
+  border: solid 2px black;
+  height: 30px;
+  width: 30px;
 }
 
 .color {
-    text-transform: uppercase;
+  font-weight: bold;
 }
 </style>
