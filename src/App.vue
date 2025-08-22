@@ -9,6 +9,11 @@ import Rating from './components/Rating.vue';
 import Dice from './components/Dice.vue';
 import Carousel from './components/Carousel.vue';
 import DriverCard from './components/DriverCard.vue';
+import NumbersTable from './components/NumbersTable.vue';
+import FaceBook from './components/FaceBook.vue';
+import SignupPage from './components/SignupPage.vue';
+import RGBColorPicker from './components/RGBColorPicker.vue';
+import SingleColorPicker from './components/SingleColorPicker.vue';
 
 </script>
 
@@ -114,6 +119,22 @@ import DriverCard from './components/DriverCard.vue';
     "https://randomuser.me/api/portraits/men/2.jpg",
   ]'
 />
+
+<h2>11: Numbers Table</h2>
+
+<NumbersTable :limit="12" />
+
+<h2>12/13: FaceBook</h2>
+<FaceBook />
+
+<h2>14: SignupPage</h2>
+
+<SignupPage />
+
+<h2>15: RGBColorPicker</h2>
+
+
+<RGBColorPicker />
 
 </template>
 

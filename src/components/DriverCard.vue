@@ -57,8 +57,8 @@ const picture = ref(props.img)
     align-items: start;
 }
 img {
-    width: 15vw;
-    height: 15vw;
+    width: 10vw;
+    height: 10vw;
     border-radius: 100px;
 }
 

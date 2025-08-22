@@ -15,14 +15,14 @@ const possibleRolls = [dice1, dice2, dice3, dice4, dice5, dice6]
 const diceRoll = () => {
     setTimeout(() => {
         const randomIndex = Math.floor(Math.random() * possibleRolls.length)
-    dice.value = possibleRolls[randomIndex]
+        dice.value = possibleRolls[randomIndex]
     }, 1000)
-    
+
 }
 </script>
 
 <template>
-<img @click="diceRoll" class="dice" :src="dice" alt="Roll the dice!">
+    <img @click="diceRoll" class="dice" :src="dice" alt="Roll the dice!">
 </template>
 
 
@@ -31,5 +31,4 @@ const diceRoll = () => {
     width: 30vw;
     height: auto;
 }
-
 </style>
